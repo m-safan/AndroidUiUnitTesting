@@ -37,5 +37,5 @@ steps:
   enabled: false
 
 - bash: |
-    echo "y" | $JAVA_HOME/bin/java
+    echo "y" | $JAVA_HOME/bin/java -version
   displayName: Listing  
