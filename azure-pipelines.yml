@@ -37,5 +37,5 @@ steps:
   enabled: false
 
 - bash: |
-    echo "y" | $ANDROID_HOME/tools/bin/avdmanager
+    echo "y" | $ANDROID_HOME/tools/bin/avdmanager -list
   displayName: Listing  
