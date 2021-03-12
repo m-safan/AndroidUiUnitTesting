@@ -38,5 +38,5 @@ steps:
 
 - bash: |
     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager
-    echo "y" | $ANDROID_HOME/tools/bin/avdmanager -list
+    echo "y" | $ANDROID_HOME/tools/bin/avdmanager list
   displayName: Listing  
