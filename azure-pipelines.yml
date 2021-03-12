@@ -19,11 +19,13 @@ steps:
     cacheHitVar: 'AVD_IMAGES_RESTORED'
   continueOnError: true
   condition: succeededOrFailed()
+  enabled: false
   
 - bash: | 
     echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86' 
     echo "AVD system-image successfully downloaded and installed." 
   displayName: 'Download and install emulator image' 
+  enabled: false
 
 - bash: | 
     echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n android_emulator -k 'system-images;android-28;google_apis;x86' -d 17 --force 
@@ -32,3 +34,8 @@ steps:
     $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done' 
     $ANDROID_HOME/platform-tools/adb devices echo "Emulator started" 
   displayName: 'Create and start emulator'
+  enabled: false
+
+- bash: |
+    echo "y" | pwd $ANDROID_HOME
+  displayName: Listing  
