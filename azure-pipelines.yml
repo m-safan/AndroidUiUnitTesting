@@ -37,5 +37,5 @@ steps:
   enabled: false
 
 - bash: |
-    echo "y" | pwd $ANDROID_HOME
+    echo "no" | pwd $ANDROID_HOME
   displayName: Listing  
