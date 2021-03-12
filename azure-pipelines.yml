@@ -37,7 +37,6 @@ steps:
   enabled: false
 
 - bash: |
-    echo "y" | cd $ANDROID_HOME
-    echo "y" | pwd
-    echo "y" | ls
+    echo "y" | $ANDROID_HOME/tools/bin/sdkmanager
+    echo "y" | $ANDROID_HOME/tools/bin/avdmanager -list
   displayName: Listing  
