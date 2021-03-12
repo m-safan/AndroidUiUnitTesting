@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -11,9 +12,16 @@ pool:
 
 steps:
 
-- task: CmdLine@2
+- task: Cache@2
   inputs:
-    script: |
-      echo Write your commands here
-      
-      echo Hello world
+    key: 'AVD_IMAGES_PIXEL_28'
+    path: '$(ANDROID_HOME)/system-images'
+    cacheHitVar: 'AVD_IMAGES_RESTORED'
+  continueOnError: true
+  condition: succeededOrFailed()
+  
+- bash: | 
+    echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-28;google_apis;x86' 
+    echo "AVD system-image successfully downloaded and installed." 
+  displayName: 'Download and install emulator image' 
+  condition: ne(variables.AVD_IMAGES_RESTORED, 'true')
